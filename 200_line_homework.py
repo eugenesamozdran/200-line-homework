@@ -45,7 +45,7 @@ weapons = ("sword",
            "crossbow",
            "spell book")
 
-#base hit points depending on the race
+#basic hit points depending on the race
 orc_hp = 55
 human_hp = 50
 elf_hp = 47
