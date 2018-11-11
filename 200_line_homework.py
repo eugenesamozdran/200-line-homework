@@ -165,6 +165,8 @@ while True:
         while True:
             print("Player 1 has {0} HP and Player 2 has {1} HP".format(p1_hp, p2_hp))
 
+            #different range of integers is chosen to show the difference between each weapon
+            
             attack_1 = input("Player 1, describe your attack to your opponent and enter 'go!': ")
             while attack_1 not in ("go!",):
                 attack_1 = input("Please try again: ")
