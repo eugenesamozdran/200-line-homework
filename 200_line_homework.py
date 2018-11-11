@@ -44,14 +44,20 @@ weapons = ("sword",
            "hammer",
            "crossbow",
            "spell book")
+
+#base hit points depending on the race
 orc_hp = 55
 human_hp = 50
 elf_hp = 47
 gnoll_hp = 49
+
+#hit points modifier for each class
 t_mod = 1.1
 b_mod = 1.2
 s_mod = 1
 w_mod = 0.9
+
+#attack modifier for each weapon
 sw_att = 1
 ham_att = 1
 cr_att = 1.2
