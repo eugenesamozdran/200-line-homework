@@ -1,6 +1,6 @@
 import random
 
-#defining the order
+#defining the player order
 def player_order(p1,p2):
       
     print("Player 1 rolled ", p1)
