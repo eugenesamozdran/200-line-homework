@@ -2,8 +2,7 @@ import string
 
 def is_palindrome(a):
 
-    # checking if the string has
-    # at least 1 alphanumeric character or space
+    # checking if the string has at least 1 alphanumeric character or space
     ALLOWED_SYMBOLS = tuple(string.ascii_lowercase + " " + string.ascii_uppercase + string.digits)
 
     while len(a) == 0:
@@ -15,7 +14,7 @@ def is_palindrome(a):
             a = input("Please enter a string containing only alphanumeric characters and spaces (if necessary): ")
             break
 
-    # making 2 copies of the string
+    # making 2 copies of the string:
     # first one is in lowercase and without spaces
     # second one is the reverted version of the first
     a1 = a.replace(" ","").lower()
