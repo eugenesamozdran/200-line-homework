@@ -18,9 +18,7 @@ def is_palindrome(a):
     # making 2 copies of the string
     # first one is in lowercase and without spaces
     # second one is the reverted version of the first
-    
     a1 = a.replace(" ","").lower()
-
     b = a1[::-1]
 
     if a1 == b:
