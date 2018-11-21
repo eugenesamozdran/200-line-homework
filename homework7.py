@@ -8,6 +8,5 @@ def magic_range():
 lst = []
 for a in magic_range():
     lst.append(a)
-        
-        
+   
 print("[{0}; {1})".format(lst[0], (lst[len(lst)-1]+1)))
