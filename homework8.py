@@ -20,6 +20,6 @@ def bubble_sort(iterable, key=None, reverse=False):
 
 a = {"zekrjgekrg": 3, "cgegerg": 3, "gr": 2}
 
-a = bubble_sort(a, len)
+a = bubble_sort(a, len, True)
 
 print(a)
