@@ -34,81 +34,64 @@ def player_order(p1,p2):
 def damage_caused(chosen_weap):
 
     #damage modifier for each weapon
-    Sw_dmg = 1
-    Ham_dmg = 1
-    Cr_dmg = 1.2
-    Sb_dmg = 1.4
-    if chosen_weap == "sword":
-        return Sw_dmg*random.randint(1,15)
-    elif chosen_weap == "hammer":
-        return Ham_dmg*random.randint(1,15)
-    elif chosen_weap == "crossbow":
-        return Cr_dmg*random.randint(1,20)
-    elif chosen_weap == "spell book":
-        return Sb_dmg*random.randint(1,23)
+    SW_DMG = 1
+    HAM_DMG = 1
+    CR_DMG = 1.2
+    SB_DMG = 1.4
+    damage = {
+                 "sword": SW_DMG*random.randint(1,15),
+                 "hammer": HAM_DMG*random.randint(1,15),
+                 "crossbow": CR_DMG*random.randint(1,20),
+                 "spell book": SB_DMG*random.randint(1,23)
+             }
+    return damage.get(chosen_weap, 0)
 
 #counting hit points based on the chosen race and class
 def race_and_class_hp(chosen_race, chosen_class):
 
     #basic hit points depending on the race
-    Orc_hp = 55
-    Human_hp = 50
-    Elf_hp = 47
-    Gnoll_hp = 49
+    ORC_HP = 55
+    HUMAN_HP = 50
+    ELF_HP = 47
+    GNOLL_HP = 49
 
     #hit points modifier for each class
-    Tank_mod = 1.1
-    Bers_mod = 1.2
-    Shoot_mod = 1
-    Wiz_mod = 0.9
+    TANK_MOD = 1.1
+    BERS_MOD = 1.2
+    SHOOT_MOD = 1
+    WIZ_MOD = 0.9
 
     #hit points formula for each race/class combination
-    orc_classes_hp = {
-                      ("orc", "tank"): Orc_hp*Tank_mod,
-                      ("orc", "berserker"): Orc_hp*Bers_mod,
-                      ("orc", "shooter"): Orc_hp*Shoot_mod,
-                      ("orc", "wizard"): Orc_hp*Wiz_mod
-                     }
+    class_hp = {
+                    ("orc", "tank"): ORC_HP*TANK_MOD,
+                    ("orc", "berserker"): ORC_HP*BERS_MOD,
+                    ("orc", "shooter"): ORC_HP*SHOOT_MOD,
+                    ("orc", "wizard"): ORC_HP*WIZ_MOD,
+                    ("human", "tank"): HUMAN_HP*TANK_MOD,
+                    ("human", "berserker"): HUMAN_HP*BERS_MOD,
+                    ("human", "shooter"): HUMAN_HP*SHOOT_MOD,
+                    ("human", "wizard"): HUMAN_HP*WIZ_MOD,
+                    ("elf", "tank"): ELF_HP*TANK_MOD,
+                    ("elf", "berserker"): ELF_HP*BERS_MOD,
+                    ("elf", "shooter"): ELF_HP*SHOOT_MOD,
+                    ("elf", "wizard"): ELF_HP*WIZ_MOD,
+                    ("gnoll", "tank"): GNOLL_HP*TANK_MOD,
+                    ("gnoll", "berserker"): GNOLL_HP*BERS_MOD,
+                    ("gnoll", "shooter"): GNOLL_HP*SHOOT_MOD,
+                    ("gnoll", "wizard"): GNOLL_HP*WIZ_MOD
+               }
+    return class_hp.get((chosen_race, chosen_class), 0)
     
-    human_classes_hp = {
-                        ("human", "tank"): Human_hp*Tank_mod,
-                        ("human", "berserker"): Human_hp*Bers_mod,
-                        ("human", "shooter"): Human_hp*Shoot_mod,
-                        ("human", "wizard"): Human_hp*Wiz_mod
-                       }
-    
-    elf_classes_hp = {
-                      ("elf", "tank"): Elf_hp*Tank_mod,
-                      ("elf", "berserker"): Elf_hp*Bers_mod,
-                      ("elf", "shooter"): Elf_hp*Shoot_mod,
-                      ("elf", "wizard"): Elf_hp*Wiz_mod
-                     }
-    
-    gnoll_classes_hp = {
-                        ("gnoll", "tank"): Gnoll_hp*Tank_mod,
-                        ("gnoll", "berserker"): Gnoll_hp*Bers_mod,
-                        ("gnoll", "shooter"): Gnoll_hp*Shoot_mod,
-                        ("gnoll", "wizard"): Gnoll_hp*Wiz_mod
-                       }
-    if chosen_race == "orc":
-        return orc_classes_hp[(chosen_race, chosen_class)]
-    elif chosen_race == "human":
-        return human_classes_hp[(chosen_race, chosen_class)]
-    elif chosen_race == "elf":
-        return elf_classes_hp[(chosen_race, chosen_class)]
-    elif chosen_race == "gnoll":
-        return gnoll_classes_hp[(chosen_race, chosen_class)]
-
 #describing races, classes, weapons, hit points and damage
-race = ("orc",
+RACE = ("orc",
         "human",
         "elf",
         "gnoll")
-battle_class = ("tank",
+BATTLE_CLASS = ("tank",
                 "berserker",
                 "shooter",
                 "wizard")
-weapons = ("sword",
+WEAPONS = ("sword",
            "hammer",
            "crossbow",
            "spell book")
@@ -123,23 +106,23 @@ while True:
     print("Let the fun begin!")
     
     #creating the character
-    p1_race = input("Player 1, choose your race {}: ".format(race))
-    while p1_race not in race:
+    p1_race = input("Player 1, choose your race {}: ".format(RACE))
+    while p1_race not in RACE:
         p1_race = input("Please try again: ")
-    p1_class = input("Your class {}: ".format(battle_class))
-    while p1_class not in battle_class:
+    p1_class = input("Your class {}: ".format(BATTLE_CLASS))
+    while p1_class not in BATTLE_CLASS:
         p1_class = input("Please try again: ")
-    p1_weap = input("And your weapon {}: ".format(weapons))
-    while p1_weap not in weapons:
+    p1_weap = input("And your weapon {}: ".format(WEAPONS))
+    while p1_weap not in WEAPONS:
         p1_weap = input("Please try again: ")
-    p2_race = input("Player 2, choose your race {}: ".format(race))
-    while p2_race not in race:
+    p2_race = input("Player 2, choose your race {}: ".format(RACE))
+    while p2_race not in RACE:
         p2_race = input("Please try again: ")
-    p2_class = input("Your class {}: ".format(battle_class))
-    while p2_class not in battle_class:
+    p2_class = input("Your class {}: ".format(BATTLE_CLASS))
+    while p2_class not in BATTLE_CLASS:
         p2_class = input("Please try again: ")
-    p2_weap = input("And your weapon {}: ".format(weapons))
-    while p2_weap not in weapons:
+    p2_weap = input("And your weapon {}: ".format(WEAPONS))
+    while p2_weap not in WEAPONS:
         p2_weap = input("Please try again: ")
 
     #player 1 and 2 hit points
