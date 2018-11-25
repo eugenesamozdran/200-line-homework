@@ -7,6 +7,7 @@ def is_palindrome(a):
     # second one is the reverted version of the first
     
     a1 = a.replace(" ","").lower()
+
     b = a1[::-1]
 
     if a1 == b:
@@ -14,21 +15,27 @@ def is_palindrome(a):
     else:
         print("NO")
 
-# allowed symbols is required for checking if any of argument characters do not match the required pattern
-ALLOWED_SYMBOLS = string.ascii_lowercase + " " + string.ascii_uppercase + string.digits
+# checking if the string matches the required pattern
+# and has at least 1 alphanumeric character or space
 
-a = "7PalinDr ome EmordNi lap7"
+def __validate_raw_string(a):
 
-# checking if the string has at least 1 alphanumeric character or space
-# and if it matches the required pattern
+    # allowed symbols is required for checking if any of argument characters do not match the required pattern
+    ALLOWED_SYMBOLS = string.ascii_lowercase + " " + string.ascii_uppercase + string.digits
 
-while len(a) == 0:
-        a = input("Please enter a string containing at least one alphanumeric character and/or space: ")
-        break
-
-for char in a:
-    while char not in ALLOWED_SYMBOLS:
-        a = input("Please enter a string containing only alphanumeric characters and spaces (if necessary): ")
-        break
-
-is_palindrome(a)
+    while len(a) == 0:
+        return False
+    
+    for char in set(a):
+        while char not in ALLOWED_SYMBOLS:
+            return False
+            continue
+    else:
+        return True
+        
+a = input("Please enter your string: ")
+        
+if __validate_raw_string(a):
+    is_palindrome(a)
+else:
+    print("A string should contain at least one alphanumeric character and/or space")
