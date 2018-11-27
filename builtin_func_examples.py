@@ -9,7 +9,7 @@ b = list(filter(lambda x: x%2, lst))
 print("filter func for 'lst':", b)
 
 d = list(dropwhile(lambda x: x<4, lst))
-print("printing 'lst' elements as soon as any of them don't meet the condition:", d)
+print("printing 'lst' elements starting from the first one that don't meet the condition:", d)
 
 y = 4
 z = 4
