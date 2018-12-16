@@ -6,6 +6,9 @@ class Bubble:
         if type(capacity).__name__ not in ("int", "float"):
             raise ValueError("int or float capacity value is expected")
 
+    #defining functions for sphere radius and square counting
+    #depending on sphere capacity
+    
     @property
     def radius(self):
         radius = ((3*self.capacity)/(4*pi))**(1/3)
@@ -16,11 +19,14 @@ class Bubble:
         square = 4*pi*(self.radius**2)
         return square
 
+    #setting the rules for addition and subtraction of
+    #two spheres and returning new sphere object as a result
+
     def __add__(self, other):
-        return self.capacity + other.capacity
+        return Bubble(self.capacity + other.capacity)
 
     def __sub__(self, other):
-        return self.capacity - other.capacity
+        return Bubble(self.capacity - other.capacity)
 
 a = Bubble(5)
 b = Bubble(3)
